@@ -24,7 +24,7 @@
 
 <template>
   <main>
-    <form class="max-w-md mx-auto p-4 bg-white shadow-md rounded-md" @submit.prevent="storeSkill(form)">
+    <form class="max-w-full p-4 shadow-md rounded-md" @submit.prevent="storeSkill(form)">
         <div class="mb-6">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
             <input type="text" id="name" 

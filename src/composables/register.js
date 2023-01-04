@@ -2,8 +2,6 @@ import { ref } from "vue";
 import axios from "axios";
 import {useRouter} from "vue-router";
 
-// axios.defaults.baseURL = "http://10.0.0.87:8001/api/v1/"
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 
 export default function registerUser() {
     const user = ref ({});

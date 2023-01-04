@@ -15,6 +15,7 @@
 
 <template>
     <div class="mx-auto container">
+      <p class="text-xs flex justify-center">Find something..</p>
         <div class="container md:mb-10 mx-auto flex justify-center">
             <div class="search-box">
                 <input type="text" v-model.trim="search" placeholder="..."
@@ -34,17 +35,17 @@
                 class="col-span-2"
             />
     </div>
-    <div class="mx-auto container">
-        <div class="container md:mb-8 pt-8 px-4 mx-auto flex justify-center select-none">
-            <button v-if="pageMeta.current_page > 1" class="block border px-4 py-2 rounded-r hover:bg-gray-200 text-gray-600" @click="skillPaginate(links.prev)">
-            &larr; Previous
-            </button>
 
-            <button v-if="pageMeta.current_page < pageMeta.last_page && pageMeta.last_page > 1" class="block border px-4 py-2 rounded-r hover:bg-gray-200 text-gray-600" @click="skillPaginate(links.next)" rel="next">
-            Next &rarr;
-            </button>
-        </div>
+    <div class="container pb-8 pt-4 px-4 mx-auto flex justify-center select-none">
+        <button v-if="pageMeta.current_page > 1" class="block border px-4 py-2 rounded-r hover:bg-gray-200 text-gray-600" @click="skillPaginate(links.prev)">
+        &larr; Previous
+        </button>
+
+        <button v-if="pageMeta.current_page < pageMeta.last_page && pageMeta.last_page > 1" class="block border px-4 py-2 rounded-r hover:bg-gray-200 text-gray-600" @click="skillPaginate(links.next)" rel="next">
+        Next &rarr;
+        </button>
     </div>
+ 
     <!-- <div>
         <button @click="nextPage(links.next)" class="mt-5 ml-6 text-xs font-bold uppercase">Next Page</button>
     </div> -->

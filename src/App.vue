@@ -11,6 +11,7 @@ onMounted(() => getUser());
 </script>
 
 <template>
+  <html>
   <header>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="max-w-7xl mx-auto">
@@ -38,7 +39,7 @@ onMounted(() => getUser());
                 </RouterLink>
             </div>
 
-            <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-5xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Surpass</span> Your Limits</h1>
+            <h1 class="text-3xl ml-12 font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-5xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Surpass</span> Your Limits</h1>
 
             <div class="mt-8 md:mt-0 flex items-center">
               <p v-if="user" class="text-xs font-bold uppercase">Welcome {{ user.username }}!</p><br/>
@@ -59,6 +60,7 @@ onMounted(() => getUser());
   <main class="max-w-7xl mx-auto min-h-screen">
     <RouterView />
   </main>
+</html>
 </template>
 
 <style>
@@ -69,7 +71,7 @@ onMounted(() => getUser());
     .clamp{
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        overflow:hidde;
+        overflow:hidden;
     }
 
     .clamp.one-line{

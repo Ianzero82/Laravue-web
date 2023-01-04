@@ -3,8 +3,6 @@ import axios from "axios";
 import {useRouter} from "vue-router";
 import { compileTemplate } from "vue/compiler-sfc";
 
-// axios.defaults.baseURL = "http://10.0.0.87:8001/api/v1/"
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 
 const user = ref('');
 export default function userSession() {

@@ -7,8 +7,6 @@ import userSession from '@/composables/session';
 const {user} = userSession();
 let {flash} = useFlash();
 
-// axios.defaults.baseURL = "http://10.0.0.87:8001/api/v1/"
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 
 export default function useSkills() {
     const skills = ref([]);
@@ -41,6 +39,22 @@ export default function useSkills() {
             links.value = response.data.links;
             pageMeta.value = response.data.meta;
             await router.push({name: "home"});
+
+        } catch(error) {
+            console.log(error);
+            if(error.response.status == 401) {
+                flash('Oops', 'Please login first', 'error');
+                await router.push({name:"Login"});
+            }
+        }
+    }
+
+    const skillTablePaginate = async (page) => {
+        try{
+            const response = await axios.get(page);
+            skills.value = response.data.data;
+            links.value = response.data.links;
+            pageMeta.value = response.data.meta;
 
         } catch(error) {
             console.log(error);
@@ -106,6 +120,7 @@ export default function useSkills() {
         updateSkill,
         destroySkill,
         skillPaginate,
+        skillTablePaginate,
         errors,
     };
 }

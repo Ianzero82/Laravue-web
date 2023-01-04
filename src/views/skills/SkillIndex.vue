@@ -6,7 +6,7 @@
 
     const {user} = userSession();
 
-    const {skills, getSkills, destroySkill} = useSkills();
+    const {skills, getSkills, destroySkill, skillTablePaginate, pageMeta, links} = useSkills();
     onMounted(() => getSkills());
     const search = ref("");
 
@@ -16,9 +16,10 @@
 <template>
 
     <div class="inline-block min-w-full shadow rounded-lg overflow-hidden bg-white">
-        <div class="container md:mb-10 mt-2 ml-2 mx-auto flex justify-left">
+        <p class="ml-3 mt-2 text-xs">Find Something..</p>
+        <div class="container md:mb-12 ml-2 mx-auto flex justify-left">
             <div class="search-box">
-                <input type="text" v-model.trim="search" placeholder="Find sum'n"
+                <input type="text" v-model.trim="search" placeholder=""
                     class="text bg-gradient-to-r to-emerald-600 from-sky-400"/>
                     <button> <i class="fa fa-search"></i></button>
             </div>
@@ -37,7 +38,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200" id="jqtesttable">
+            <tbody class="divide-y divide-gray-200" id="jqtesttable">
 
                 <tr id="row"
                     v-for="skill in searchProducts(search, skills)"
@@ -54,7 +55,16 @@
                         <button @click="destroySkill(skill.id)" class="text-s text-red-400">Delete</button>
                     </td>
                 </tr>
-        </tbody>            
+        </tbody>
+        <div class="container pb-8 pt-4 px-4 mx-auto flex justify-center select-none">
+        <button v-if="pageMeta.current_page > 1" class="block border px-4 py-2 rounded-r hover:bg-gray-200 text-gray-600" @click="skillTablePaginate(links.prev)">
+        &larr; Previous
+        </button>
+
+        <button v-if="pageMeta.current_page < pageMeta.last_page && pageMeta.last_page > 1" class="block border px-4 py-2 rounded-r hover:bg-gray-200 text-gray-600" @click="skillTablePaginate(links.next)" rel="next">
+        Next &rarr;
+        </button>
+    </div>        
         </table>
     </div>
 
@@ -74,7 +84,7 @@
 }
 
 .search-box button{
-  width: 20px;
+  width: 15px;
   height: 30px;
   border-radius: 50%;
   border:none;
@@ -99,7 +109,7 @@
 }
 
 .search-box:hover .text{
-  width:240px;
+  width:340px;
   padding: 10px 20px;
   
 }

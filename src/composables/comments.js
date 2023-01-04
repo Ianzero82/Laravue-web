@@ -3,7 +3,6 @@ import axios from "axios";
 import {useRouter} from "vue-router";
 import { compileTemplate } from "vue/compiler-sfc";
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 
 export default function useComments() {
     
